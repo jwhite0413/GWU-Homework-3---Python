@@ -21,9 +21,9 @@ average_change = 0
 
 
 #open file and show header rows
-with open(pybank_csv, 'r') as csvfile:
+with open(pybank_csv, 'r',) as csvfile:
     csvreader = csv.reader(csvfile,delimiter=",")
-    csv_header = next(csvfile)
+    csv_header = next(csvreader)
     print(f"Header:{csv_header}")
 #Total number of months and total profits
     for row in csvreader:
@@ -61,4 +61,6 @@ f"Greatest Increase: {greatest_increase}\n"
 f"Greatest Decrease: {greatest_decrease}\n")
 
 print (Output)
- 
+
+with open ('PyBank.txt','w') as text_file:
+    textwriter = text_file.write(Output)

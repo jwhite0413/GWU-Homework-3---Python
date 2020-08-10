@@ -21,8 +21,7 @@ with open(pypoll_csv,'r') as csvfile:
 #total number of votes
     for row in csv_reader:
         votes = votes + 1
-        # candidatelist.append(row[2])
-        # number_of_votes = (len(list(csvreader)))
+        
         candidate = row[2]
     # for candidate in candidatelist:
         if candidate  in candidatelist: 
@@ -37,7 +36,8 @@ most_votes_index = 0
 for count in range (len(candidatelist)):
     vote_percent = vote_count[count]/votes*100
     percent.append(vote_percent)
-
+    candidate_data = (f"{candidatelist[count]}:{percent[count]}% ({vote_count[count]}")
+    print (candidate_data)
     if vote_count[count]> most_votes:
         print(most_votes)
         most_votes_index = count 
@@ -47,9 +47,22 @@ winner = candidatelist[most_votes_index]
 percent = [round(i, 3) for i in percent]
 
 
+    
 
-print(percent)
+Output = (
+    "Election Results"
+    f"---------\n"
+    f"Total Votes: {votes}"
+    f"{candidate_data}"
+    f"---------\n"
+    f"Winner: {winner}"
+    f"---------\n")
 
-     
+print(Output)
 
 
+
+
+with open ('PyPoll.txt','w') as text_file:
+    textwriter = text_file.write(Output)
+       
